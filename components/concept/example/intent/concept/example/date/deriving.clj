@@ -22,17 +22,13 @@
 (defn count-derive [] (count @derive/*derive-cache*))
 
 (defn derive-set [] @derive/*derive-cache*)
+;
+;(with-cache
+;  {}
+;  (def-derive-concept ::local-date-time->local-datetime local-date-time->local-datetime :date/local-datetime :date/local-date :date/local-time)
+;  (def-derive-concept ::local-date-time->instant local-date-time->instant :date/instant :date/local-date :date/local-time :date/zone-id)
+;  (def-derive-concept ::instant->date instant->date :date/date :date/instant)
+;  (let [possibles (direct-derive-routes :date/local-datetime [:date/local-time :date/local-date])]
+;    (derive-concept (first possibles) [:date/local-time :date/local-date] [(LocalTime/of 10 20) (LocalDate/of 2021 10 5)])))
 
-(with-cache
-  {}
-  (def-derive-concept ::local-date-time->local-datetime local-date-time->local-datetime :date/local-datetime :date/local-date :date/local-time)
-  (def-derive-concept ::local-date-time->instant local-date-time->instant :date/instant :date/local-date :date/local-time :date/zone-id)
-  (def-derive-concept ::instant->date instant->date :date/date :date/instant)
-  (let [possibles (direct-derive-routes :date/local-datetime [:date/local-time :date/local-date])]
-    (derive-concept (first possibles) [:date/local-time :date/local-date] [(LocalTime/of 10 20) (LocalDate/of 2021 10 5)])))
 
-; LDT [LD LT]
-; INST [LDT ZID]
-; D [INST]
-
-; -> D [LD LT ZID]
