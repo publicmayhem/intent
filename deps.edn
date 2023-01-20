@@ -1,0 +1,24 @@
+{:mvn/repos {"central" {:url "https://repo1.maven.org/maven2/"}
+             "clojars" {:url "https://clojars.org/repo"}
+             "s3-private-snapshot-repo" {:url "s3://egiraffe-s3repo/snapshots"}
+             "s3-private-release-repo"  {:url "s3://egiraffe-s3repo/releases"}
+             }
+
+ ; recommended alias for cursive [dev, test, example]
+ :aliases   {:dev  {:extra-paths ["development/src"
+                                  "components/concept/src"
+                                  "components/concept/resources"]
+
+                    :extra-deps  {egiraffe/repl-logging {:mvn/version "1.0.0"}
+                                  clj-time/clj-time {:mvn/version "0.15.2"}
+                                  metosin/spec-tools {:mvn/version "0.6.1"}
+                                  org.clojure/tools.logging {:mvn/version "1.1.0"}
+                                  aysylu/loom {:mvn/version "1.0.2"}}}
+
+             :example {:extra-paths ["components/concept/example"]}
+
+             :test {:extra-paths ["components/concept/test"]
+                    :extra-deps  {org.clojure/test.check {:mvn/version "0.10.0-alpha3"}}}
+
+             :poly {:main-opts  ["-m" "polylith.clj.core.poly-cli.core"]
+                    :extra-deps {polylith/clj-poly {:mvn/version "0.2.12-alpha"}}}}}
